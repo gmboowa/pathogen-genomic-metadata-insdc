@@ -78,12 +78,14 @@ This repository includes a small **example dataset** for reference.
 
 ### File layout
 
-```text
+```bash
 
 data/examples/
 ├── s_aureus_tanzania_ENA_runs.tsv
 
 
+```
+---
 What the example demonstrates
 
 Expected columns (run/sample/study & key metadata fields)
@@ -120,6 +122,7 @@ Metadata completeness varies widely by project and submitter.
 
 🧪 downstream genomic analysis (e.g., gene/variant-based AMR prediction).
 
+---
 ## License
 
 Code: MIT License (see LICENSE)
