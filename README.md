@@ -70,52 +70,61 @@ The downloaded file is a tab-separated (TSV) table containing fields such as:
 - 📝 **Sample title**
 
 These fields are suitable for downstream filtering, enrichment & analysis.
-
 ---
+
 ## Example dataset included in this repository
 
-This repository includes a small example dataset for reference:
+This repository includes a small **example dataset** for reference.
+
+### File layout
+
+```text
 
 data/examples/
- ├
- └── s_aureus_tanzania_ENA_runs.csv
+├── s_aureus_tanzania_ENA_runs.tsv
 
 
-These files illustrate:
+What the example demonstrates
 
-expected columns,
+Expected columns (run/sample/study & key metadata fields)
 
-naming conventions,
+ => Naming conventions for outputs & folders
 
-data completeness and limitations.
+ => Real-world completeness issues (missing fields, inconsistent entries)
 
-Using placeholders (recommended pattern)
+🧩 Using placeholders (recommended pattern)
 
-Replace the query with your own pathogen and geography.
+Replace the example pathogen & geography with your own use case.
 
-Generic template
+🧪 Generic template (single country)
+
 tax_name("<PATHOGEN_NAME>") AND country="<COUNTRY>"
 
-Multiple countries or regions
+🌍 Multiple countries / regions
+
 tax_name("<PATHOGEN_NAME>") AND (country="<COUNTRY1>" OR country="<COUNTRY2>")
 
-Notes and limitations
+Tip: You can also substitute country= with other filters such as host=, collection_date=, or project/study accessions depending on your question.
 
-Metadata completeness varies by submitter and project.
+ Notes & limitations
 
-Multiple runs may correspond to the same isolate; use BioSample accession for deduplication.
+Metadata completeness varies widely by project and submitter.
 
-AMR phenotypes and resistance calls are often not present in run metadata and may require:
+🧬 One isolate may have multiple runs; use BioSample accession to deduplicate isolates where appropriate.
 
-linked publications,
+🧫 AMR phenotypes / resistance calls are often not included in run metadata and may require:
 
-supplementary tables,
+📄 linked publications,
 
-or downstream genomic analysis.
+📎 supplementary tables,
 
-License
+🧪 downstream genomic analysis (e.g., gene/variant-based AMR prediction).
+
+## License
 
 Code: MIT License (see LICENSE)
-Data: Derived from public repositories; users should cite original studies and respect repository terms.
 
+Data: Derived from public repositories — please cite original studies & respect repository terms.
 
+makefile
+Copy code
