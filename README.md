@@ -1,8 +1,8 @@
 # Pathogen Genomic Metadata (INSDC)
 
-Reproducible tools and curated metadata for public pathogen sequencing data from **INSDC nucleotide repositories**, including **ENA (European Nucleotide Archive)** and **NCBI SRA (Sequence Read Archive)**.
+Reproducible tools & curated metadata for public pathogen sequencing data from **INSDC nucleotide repositories**, including **ENA (European Nucleotide Archive)** & **NCBI SRA (Sequence Read Archive)**.
 
-This repository is **pathogen-agnostic** and **geography-agnostic**. The same approach can be applied to **any pathogen** and **any geographic scope** (country, region, continent, or global).
+This repository is **pathogen-agnostic** & **geography-agnostic**. The same approach can be applied to **any pathogen** & **any geographic scope** (country, region, continent, or global).
 
 ---
 
@@ -38,7 +38,7 @@ These databases synchronize under the **INSDC** framework.
 Below is an example using *Staphylococcus aureus* isolates from **Tanzania**.
 
 > *This is only an example.*  
-> Replace the pathogen name and geographic scope with your own use case.
+> Replace the pathogen name & geographic scope with your own use case.
 
 ### Example ENA query
 
@@ -55,32 +55,67 @@ curl -sG "https://www.ebi.ac.uk/ena/portal/api/search" \
 ---
 ## Output format
 
-
-
 The downloaded file is a tab-separated (TSV) table containing fields such as:
 
-Run accession
+- 🧬 **Run accession**
+- 🧪 **BioSample accession**
+- 📦 **BioProject / Study accession**
+- 🔬 **Scientific name**
+- 🖥️ **Sequencing platform & instrument**
+- 🧫 **Library strategy and source**
+- 🌍 **Country / location**
+- 📅 **Collection date**
+- 🦠 **Isolation source**
+- 👤 **Host**
+- 📝 **Sample title**
 
-BioSample accession
+These fields are suitable for downstream filtering, enrichment & analysis.
 
-BioProject / Study accession
+---
+## Example dataset included in this repository
 
-Scientific name
+This repository includes a small example dataset for reference:
 
-Sequencing platform and instrument
+data/examples/
+ ├
+ └── s_aureus_tanzania_ENA_runs.csv
 
-Library strategy and source
 
-Country / location
+These files illustrate:
 
-Collection date
+expected columns,
 
-Isolation source
+naming conventions,
 
-Host
+data completeness and limitations.
 
-Sample title
+Using placeholders (recommended pattern)
 
-These fields are suitable for downstream filtering, enrichment, and analysis.
+Replace the query with your own pathogen and geography.
+
+Generic template
+tax_name("<PATHOGEN_NAME>") AND country="<COUNTRY>"
+
+Multiple countries or regions
+tax_name("<PATHOGEN_NAME>") AND (country="<COUNTRY1>" OR country="<COUNTRY2>")
+
+Notes and limitations
+
+Metadata completeness varies by submitter and project.
+
+Multiple runs may correspond to the same isolate; use BioSample accession for deduplication.
+
+AMR phenotypes and resistance calls are often not present in run metadata and may require:
+
+linked publications,
+
+supplementary tables,
+
+or downstream genomic analysis.
+
+License
+
+Code: MIT License (see LICENSE)
+Data: Derived from public repositories; users should cite original studies and respect repository terms.
 
 
