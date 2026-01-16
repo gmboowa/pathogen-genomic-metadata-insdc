@@ -1,4 +1,4 @@
-# Pathogen Genomic Metadata (INSDC)
+## Pathogen Genomic Metadata (INSDC)
 
 Reproducible tools & curated metadata for public pathogen sequencing data from **INSDC nucleotide repositories**, including **ENA (European Nucleotide Archive)** & **NCBI SRA (Sequence Read Archive)**.
 
@@ -69,7 +69,7 @@ The downloaded file is a tab-separated (TSV) table containing fields such as:
 - 👤 **Host**
 - 📝 **Sample title**
 
-These fields are suitable for downstream filtering, enrichment & analysis.
+### These fields are suitable for downstream filtering, enrichment & analysis.
 ---
 
 ## Example dataset included in this repository
@@ -86,35 +86,33 @@ data/examples/
 
 ```
 ---
-What the example demonstrates
+### What the example demonstrates
 
 Expected columns (run/sample/study & key metadata fields)
 
- => Naming conventions for outputs & folders
+Naming conventions for outputs & folders
 
- => Real-world completeness issues (missing fields, inconsistent entries)
+Real-world completeness issues (missing fields, inconsistent entries)
 
-🧩 Using placeholders (recommended pattern)
+### Using placeholders (recommended pattern)
 
 Replace the example pathogen & geography with your own use case.
 
-🧪 Generic template (single country)
+Generic template (single country)
 
 tax_name("<PATHOGEN_NAME>") AND country="<COUNTRY>"
 
-🌍 Multiple countries / regions
+Multiple countries / regions
 
 tax_name("<PATHOGEN_NAME>") AND (country="<COUNTRY1>" OR country="<COUNTRY2>")
 
 Tip: You can also substitute country= with other filters such as host=, collection_date=, or project/study accessions depending on your question.
 
- Notes & limitations
+### Notes & limitations
 
 Metadata completeness varies widely by project and submitter.
-
-🧬 One isolate may have multiple runs; use BioSample accession to deduplicate isolates where appropriate.
-
-🧫 AMR phenotypes / resistance calls are often not included in run metadata and may require:
+One isolate may have multiple runs; use BioSample accession to deduplicate isolates where appropriate.
+AMR phenotypes / resistance calls are often not included in run metadata and may require:
 
 📄 linked publications,
 
