@@ -51,7 +51,7 @@ curl -sG "https://www.ebi.ac.uk/ena/portal/api/search" \
   --data-urlencode 'limit=0' \
   > s_aureus_tanzania_ENA_runs.tsv
 
-``
+```
 ---
 ## Output format
 
