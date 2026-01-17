@@ -70,6 +70,34 @@ The downloaded file is a tab-separated (TSV) table containing fields such as:
 - 📝 **Sample title**
 
 ### These fields are suitable for downstream filtering, enrichment & analysis.
+
+---
+## Downloading the raw reads (runs)
+
+Recommended (more robust, avoids partial downloads)
+
+```bash
+cut -f1 input.tsv > s_aureus_tanzania_ENA.txt
+
+mkdir -p fastq && cat s_aureus_tanzania_ENA.txt | xargs -n 1 -P 4 fastq-dump --split-3 --gzip --outdir fastq
+
+```
+-P 4 → downloads 4 runs in parallel (adjust to your bandwidth)
+
+--split-3 → handles paired or single-end correctly
+
+--gzip → compresses FASTQs
+
+--outdir fastq → keeps things tidy
+
+
+
+### Important notes:
+
+Ensure s_aureus_tanzania_ENA.txt contains only one run accession per line (e.g. ERR12511691)
+
+Make sure SRA Toolkit is configured:
+
 ---
 
 ## Example dataset included in this repository
