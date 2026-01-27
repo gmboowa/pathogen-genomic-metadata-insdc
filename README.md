@@ -62,7 +62,7 @@ The downloaded file is a tab-separated (TSV) table containing fields such as:
 - 📦 **BioProject / Study accession**
 - 🔬 **Scientific name**
 - 🖥️ **Sequencing platform & instrument**
-- 🧫 **Library strategy and source**
+- 🧫 **Library strategy & source**
 - 🌍 **Country / location**
 - 📅 **Collection date**
 - 🦠 **Isolation source**
@@ -138,9 +138,9 @@ Tip: You can also substitute country= with other filters such as host=, collecti
 
 ### Notes & limitations
 
-Metadata completeness varies widely by project and submitter.
+Metadata completeness varies widely by project & submitter.
 One isolate may have multiple runs; use BioSample accession to deduplicate isolates where appropriate.
-AMR phenotypes / resistance calls are often not included in run metadata and may require:
+AMR phenotypes / resistance calls are often not included in run metadata & may require:
 
 📄 linked publications,
 
@@ -153,7 +153,6 @@ AMR phenotypes / resistance calls are often not included in run metadata and may
 
 Code: MIT License (see LICENSE)
 
-Data: Derived from public repositories — please cite original studies & respect repository terms.
 
-makefile
-Copy code
+
+
