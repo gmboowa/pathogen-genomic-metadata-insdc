@@ -151,7 +151,7 @@ AMR phenotypes / resistance calls are often not included in run metadata & may r
 ---
 ## License
 
-Code: MIT License (see LICENSE)
+MIT License 
 
 
 
