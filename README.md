@@ -53,6 +53,21 @@ curl -sG "https://www.ebi.ac.uk/ena/portal/api/search" \
 
 ```
 ---
+---
+### Example query multiple run accessions
+
+```bash
+curl -sG "https://www.ebi.ac.uk/ena/portal/api/search" \
+  --data-urlencode 'result=read_run' \
+  --data-urlencode 'query=run_accession=ERR11968331 OR run_accession=ERR11968338 OR run_accession=ERR11968340 OR run_accession=ERR11968343 OR run_accession=ERR11968349 OR run_accession=ERR11968350 OR run_accession=ERR11968359 OR run_accession=ERR11968360 OR run_accession=ERR11968366 OR run_accession=ERR11968367 OR run_accession=ERR11968372 OR run_accession=ERR11968387 OR run_accession=ERR11968390 OR run_accession=ERR11968400 OR run_accession=ERR11968415 OR run_accession=ERR11968434' \
+  --data-urlencode 'fields=run_accession,sample_accession,study_accession,scientific_name,first_public,instrument_platform,instrument_model,library_strategy,library_selection,library_source,country,collection_date,isolation_source,location,host,sample_title' \
+  --data-urlencode 'format=tsv' \
+  --data-urlencode 'limit=0' \
+  > Selected_runs.tsv
+
+
+```
+---
 ## Output format
 
 The downloaded file is a tab-separated (TSV) table containing fields such as:
