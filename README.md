@@ -180,7 +180,7 @@ Important notes:
 
 Ensure pathogen_country_ena.txt contains only one run accession per line (e.g. ERR12511691)
 
-Make sure SRA Toolkit is configured
+### Make sure SRA Toolkit is configured
 ---
 
 ### Pathogen SRA download utility
@@ -248,7 +248,7 @@ During execution, the script displays progress in the format:
 
 [12/340 | 3.53%] Downloading: ERR123456
 
-This makes it easier to monitor large download jobs and estimate how far the run has progressed.
+#### This makes it easier to monitor large download jobs and estimate how far the run has progressed.
 ---
 
 ### Example use case
