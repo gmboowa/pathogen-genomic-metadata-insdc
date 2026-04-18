@@ -143,9 +143,9 @@ Replace the example pathogen & geography with your own use case.
 
 Generic template (single country)
 
-tax_name("<PATHOGEN_NAME>") AND country="<COUNTRY>"
+tax_name("<PATHOGEN_NAME>") AND country="<COUNTRY>" OR continent="<CONTINENT>"
 
-Multiple countries / regions
+Multiple countries / regions / continent
 
 tax_name("<PATHOGEN_NAME>") AND (country="<COUNTRY1>" OR country="<COUNTRY2>")
 
@@ -157,11 +157,108 @@ Metadata completeness varies widely by project & submitter.
 One isolate may have multiple runs; use BioSample accession to deduplicate isolates where appropriate.
 AMR phenotypes / resistance calls are often not included in run metadata & may require:
 
-📄 linked publications,
 
-📎 supplementary tables,
+### Downloading the raw reads (runs)
 
-🧪 downstream genomic analysis (e.g., gene/variant-based AMR prediction).
+#### usage
+
+
+```bash
+
+cut -f1 input.tsv > pathogen_country_ena.tsv
+
+mkdir -p fastq && cat pathogen_country_ena.tsv | xargs -n 1 -P 4 fastq-dump --split-3 --gzip --outdir fastq
+-P 4 → downloads 4 runs in parallel 
+--split-3 → handles paired or single-end correctly
+--gzip → compresses FASTQs
+--outdir fastq → keeps things tidy
+
+```
+Important notes:
+
+Ensure pathogen_country_ena.txt contains only one run accession per line (e.g. ERR12511691)
+
+Make sure SRA Toolkit is configured
+
+
+### Pathogen SRA download utility
+
+For larger download jobs, this repository also supports a simple Bash-based 'download_pathogen_sra.sh' workflow for downloading runs directly from a TSV file containing SRA accessions in the first column.
+
+Script
+
+The utility script is named:
+
+download_pathogen_sra.sh
+
+It is designed to:
+
+parse the first column of an input TSV file,
+automatically ignore an optional header,
+create the output directory if it does not exist,
+download reads with fastq-dump --split-3 --gzip,
+show progress as current / total with percentage,
+skip runs that have already been downloaded,
+write logs for successful and failed downloads.
+
+Example command
+
+```bash
+
+bash download_pathogen_sra.sh \
+  --input pathogen_country_ena.tsv \
+  --output reads
+
+```
+Parameters
+
+Parameter	Description	Required
+--input	Absolute path to the TSV file containing run accessions in the first column	Yes
+--output	Output directory where downloaded FASTQ files and logs will be written	Yes
+
+Expected input format
+
+The script expects a TSV file where the first column contains run accessions such as:
+
+ERR123456
+ERR123457
+SRR987654
+DRR765432
+
+A header row may be present and will be skipped automatically.
+
+#### Output files
+
+The script writes downloaded reads and log files into the output directory provided with --output.
+
+Typical outputs include:
+
+ERR123456.fastq.gz for single-end runs
+ERR123456_1.fastq.gz and ERR123456_2.fastq.gz for paired-end runs
+download_success.log
+download_failed.log
+run_accessions.txt
+Progress reporting
+
+During execution, the script displays progress in the format:
+
+[12/340 | 3.53%] Downloading: ERR123456
+
+This makes it easier to monitor large download jobs and estimate how far the run has progressed.
+
+### Example use case
+
+This utility is useful when metadata have already been exported from ENA into a file such as:
+
+pathogen_country_ena.tsv
+
+and the goal is to reproducibly retrieve the corresponding raw sequence reads into a dedicated output directory, for example:
+
+reads
+Usage notes
+Run the script with bash rather than relying on direct execution from an external drive
+Ensure fastq-dump is installed and available in your PATH
+Re-running the script is safe because already downloaded runs are skipped automatically
 
 ---
 ## License
