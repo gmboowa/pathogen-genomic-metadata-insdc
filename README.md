@@ -151,6 +151,8 @@ tax_name("<PATHOGEN_NAME>") AND (country="<COUNTRY1>" OR country="<COUNTRY2>")
 
 Tip: You can also substitute country= with other filters such as host=, collection_date=, or project/study accessions depending on your question.
 
+---
+
 ### Notes & limitations
 
 Metadata completeness varies widely by project & submitter.
@@ -179,7 +181,7 @@ Important notes:
 Ensure pathogen_country_ena.txt contains only one run accession per line (e.g. ERR12511691)
 
 Make sure SRA Toolkit is configured
-
+---
 
 ### Pathogen SRA download utility
 
@@ -227,6 +229,8 @@ DRR765432
 
 A header row may be present and will be skipped automatically.
 
+---
+
 #### Output files
 
 The script writes downloaded reads and log files into the output directory provided with --output.
@@ -245,6 +249,7 @@ During execution, the script displays progress in the format:
 [12/340 | 3.53%] Downloading: ERR123456
 
 This makes it easier to monitor large download jobs and estimate how far the run has progressed.
+---
 
 ### Example use case
 
